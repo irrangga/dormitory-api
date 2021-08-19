@@ -1,0 +1,901 @@
+{
+	"info": {
+		"_postman_id": "39846ba3-db9f-47dd-9e24-b6726097751f",
+		"name": "Dormitory API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add New Room",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "room_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "room_size",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "bed",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Room by Room ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response body should contain room_id', () => {\r",
+							"    const responseJson = pm.response.json()\r",
+							"    const { data } = responseJson\r",
+							"\r",
+							"    pm.environment.set('room_id', data.map(({ room_id }) => room_id)[0])\r",
+							"    pm.environment.set('price', data.map(({ price }) => price)[0])\r",
+							"    pm.environment.set('room_size', data.map(({ room_size }) => room_size)[0])\r",
+							"    pm.environment.set('bed', data.map(({ bed }) => bed)[0])\r",
+							"    pm.environment.set('description', data.map(({ description }) => description)[0])\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/room/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"room",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Room by Room ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "price",
+							"value": "{{price}}",
+							"type": "text"
+						},
+						{
+							"key": "room_size",
+							"value": "{{room_size}}",
+							"type": "text"
+						},
+						{
+							"key": "bed",
+							"value": "{{bed}}",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "{{description}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/room/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"room",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": "{{room_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Room by Room ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/room/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"room",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": "{{room_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Facility",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "facilities",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "list_item",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/facility",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"facility"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Facilities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/facility",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"facility"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Facility by List Item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/facility/:list_item",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"facility",
+						":list_item"
+					],
+					"variable": [
+						{
+							"key": "list_item",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "full_name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "id_card_number",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthplace",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "religion",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User by User ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response body should contain user_id', () => {\r",
+							"    const responseJson = pm.response.json()\r",
+							"    const { data } = responseJson\r",
+							"\r",
+							"    pm.environment.set('user_id', data.map(({ user_id }) => user_id)[0])\r",
+							"    pm.environment.set('name', data.map(({ name }) => name)[0])\r",
+							"    pm.environment.set('full_name', data.map(({ full_name }) => full_name)[0])\r",
+							"    pm.environment.set('id_card_number', data.map(({ id_card_number }) => id_card_number)[0])\r",
+							"    pm.environment.set('birthplace', data.map(({ birthplace }) => birthplace)[0])\r",
+							"    pm.environment.set('birthdate', data.map(({ birthdate }) => birthdate)[0])\r",
+							"    pm.environment.set('address', data.map(({ address }) => address)[0])\r",
+							"    pm.environment.set('religion', data.map(({ religion }) => religion)[0])\r",
+							"    pm.environment.set('phone_number', data.map(({ phone_number }) => phone_number)[0])\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/user/:user_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						":user_id"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User by User ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "full_name",
+							"value": "{{full_name}}",
+							"type": "text"
+						},
+						{
+							"key": "id_card_number",
+							"value": "{{id_card_number}}",
+							"type": "text"
+						},
+						{
+							"key": "birthplace",
+							"value": "{{birthplace}}",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "{{birthdate}}",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "{{address}}",
+							"type": "text"
+						},
+						{
+							"key": "religion",
+							"value": "{{religion}}",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "{{phone_number}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/user/:user_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						":user_id"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User by User ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/user/:user_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"user",
+						":user_id"
+					],
+					"variable": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Occupant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "room_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "user_id",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "check_in",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "check_out",
+							"value": "",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Occupancies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Occupied Rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy/occupied",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy",
+						"occupied"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Empty Rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy/empty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy",
+						"empty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Occupancy by Room ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('response body should contain room_id', () => {\r",
+							"    const responseJson = pm.response.json()\r",
+							"    const { data } = responseJson\r",
+							"\r",
+							"    pm.environment.set('room_id', data.map(({ room_id }) => room_id)[0])\r",
+							"    pm.environment.set('user_id', data.map(({ user_id }) => user_id)[0])\r",
+							"    pm.environment.set('name', data.map(({ name }) => name)[0])\r",
+							"    pm.environment.set('check_in', data.map(({ check_in }) => check_in)[0])\r",
+							"    pm.environment.set('check_out', data.map(({ check_out }) => check_out)[0])\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Occupancy by Room ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user_id",
+							"value": "{{user_id}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "check_in",
+							"value": "{{check_in}}",
+							"type": "text"
+						},
+						{
+							"key": "check_out",
+							"value": "{{check_out}}",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": "{{room_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Occupancy by Room ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/occupancy/:room_id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"occupancy",
+						":room_id"
+					],
+					"variable": [
+						{
+							"key": "room_id",
+							"value": "{{room_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Timetables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/timetable",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"timetable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Timetable by Date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/timetable/:date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"timetable",
+						":date"
+					],
+					"variable": [
+						{
+							"key": "date",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Unpaid Users by Inspection Date",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/timetable/unpaid/:inspection_date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"timetable",
+						"unpaid",
+						":inspection_date"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "inspection_date",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
