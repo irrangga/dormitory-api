@@ -11,8 +11,11 @@ const addRoom = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Add new room success'
+      }
     })
   })
 }
@@ -23,8 +26,12 @@ const getAllRooms = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data room success'
+      },
+      data: result
     })
   })
 }
@@ -35,8 +42,12 @@ const getRoomByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Load data room ${req.params.room_id} success`
+      },
+      data: result
     })
   })
 }
@@ -56,8 +67,11 @@ const updateRoomByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Room ${req.params.room_id} successfully updated`
+      }
     })
   })
 }
@@ -68,8 +82,11 @@ const deleteRoomByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Room ${req.params.room_id} successfully deleted`
+      }
     })
   })
 }

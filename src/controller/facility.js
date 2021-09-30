@@ -9,8 +9,11 @@ const addFacility = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Facilities successfully added ${req.body.list_item}`
+      }
     })
   })
 }
@@ -25,8 +28,12 @@ const getAllFacilities = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data facilities success'
+      },
+      data: result
     })
   })
 }
@@ -37,8 +44,11 @@ const deleteFacilityByListItem = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Facilities successfully deleted ${req.params.list_item}`
+      }
     })
   })
 }

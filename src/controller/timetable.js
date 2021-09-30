@@ -6,8 +6,12 @@ const getAllTimetables = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data timetables success'
+      },
+      data: result
     })
   })
 }
@@ -18,8 +22,12 @@ const getTimetableByDate = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data timetables by date success'
+      },
+      data: result
     })
   })
 }
@@ -37,8 +45,12 @@ const getUnpaidUsers = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data unpaid users success'
+      },
+      data: result
     })
   })
 }

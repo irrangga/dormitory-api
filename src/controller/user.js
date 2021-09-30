@@ -11,8 +11,11 @@ const addUser = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Add new user success'
+      }
     })
   })
 }
@@ -23,8 +26,12 @@ const getAllUsers = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data users success'
+      },
+      data: result
     })
   })
 }
@@ -35,8 +42,12 @@ const getUserByUserId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Load data user ${req.params.user_id} success`
+      },
+      data: result
     })
   })
 }
@@ -60,8 +71,11 @@ const updateUserByUserId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `User ${req.params.user_id} successfully updated`
+      }
     })
   })
 }
@@ -72,8 +86,11 @@ const deleteUserByUserId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `User ${req.params.user_id} successfully deleted`
+      }
     })
   })
 }

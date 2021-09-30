@@ -24,8 +24,11 @@ const addOccupant = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Add new occupant success'
+      }
     })
   })
 }
@@ -36,8 +39,12 @@ const getAllOccupancies = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data occupancies success'
+      },
+      data: result
     })
   })
 }
@@ -48,8 +55,12 @@ const getOccupiedRooms = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data occupied rooms success'
+      },
+      data: result
     })
   })
 }
@@ -65,8 +76,12 @@ const getEmptyRooms = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: 'Load data empty rooms success'
+      },
+      data: result
     })
   })
 }
@@ -77,8 +92,12 @@ const getOccupancyByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Load data occupancy for room ${req.params.room_id} success`
+      },
+      data: result
     })
   })
 }
@@ -107,8 +126,11 @@ const updateOccupancyByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Occuapncy for room ${req.params.room_id} successfully updated`
+      }
     })
   })
 }
@@ -122,8 +144,11 @@ const deleteOccupancyByRoomId = (req, res) => {
   pool.query(sql, (err, result) => {
     if (err) throw err
     res.send({
-      data: result,
-      status: 'ok'
+      status: {
+        code: 200,
+        shortcode: 'OK',
+        message: `Room ${req.params.room_id} successfully emptied`
+      }
     })
   })
 }
